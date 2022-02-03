@@ -6,6 +6,7 @@
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    // Home row mods
     case LGUI_T(KC_A):
     case LGUI_T(KC_QUOT):
       return TAPPING_TERM + 50;
@@ -18,6 +19,18 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case LSFT_T(KC_F):
     case LSFT_T(KC_J):
       return TAPPING_TERM - 20;
+
+    // Thumb keys
+    case LT(MESH, KC_ESC):
+    case LT(FUN, KC_DEL):
+      return TAPPING_TERM;
+    case LT(NAV, KC_SPC):
+    case LT(NUM, KC_BSPC):
+      return TAPPING_TERM - 20;
+    case LT(CAT, KC_TAB):
+    case LT(SYM, KC_ENT):
+      return TAPPING_TERM - 20;
+
     default:
       return TAPPING_TERM;
   }
