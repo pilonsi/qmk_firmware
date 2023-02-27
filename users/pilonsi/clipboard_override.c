@@ -1,0 +1,93 @@
+// Copyright 2023 Pilonsi
+// My personal 36-key layout based off a modified version of the wonderful Miryoku layout, by Manna Harbour
+// https://github.com/manna-harbour/miryoku
+
+// This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 2 of the License, or (at your option) any later version. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+static uint8_t pilonsi_clipboard_mode = PILONSI_CB_MODE_MAC;
+
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    case U_CBM:
+      if (record->event.pressed) {
+        unregister_code16(U_CBM);
+        if (pilonsi_clipboard_mode == PILONSI_CB_MODE_MAC){
+          pilonsi_clipboard_mode = PILONSI_CB_MODE_WIN;
+        } else {
+          pilonsi_clipboard_mode = PILONSI_CB_MODE_MAC;
+        }
+      }
+      break;
+
+    case KC_AGIN:
+      if (record->event.pressed) {
+        unregister_code16(KC_AGIN);
+        switch (pilonsi_clipboard_mode) {
+          case PILONSI_CB_MODE_WIN:
+           tap_code16(C(KC_Y));
+            break;
+          
+          case PILONSI_CB_MODE_MAC:
+          default:
+           tap_code16(SCMD(KC_Z));
+        }
+      } 
+
+    case KC_PSTE:
+      if (record->event.pressed) {
+        unregister_code16(KC_PSTE);
+        switch (pilonsi_clipboard_mode) {
+          case PILONSI_CB_MODE_WIN:
+           tap_code16(C(KC_V));
+            break;
+          
+          case PILONSI_CB_MODE_MAC:
+          default:
+           tap_code16(LCMD(KC_V));
+        }
+      } 
+
+    case KC_COPY:
+      if (record->event.pressed) {
+        unregister_code16(KC_COPY);
+        switch (pilonsi_clipboard_mode) {
+          case PILONSI_CB_MODE_WIN:
+           tap_code16(C(KC_C));
+            break;
+          
+          case PILONSI_CB_MODE_MAC:
+          default:
+           tap_code16(LCMD(KC_C));
+        }
+      } 
+
+    case KC_CUT:
+      if (record->event.pressed) {
+        unregister_code16(KC_CUT);
+        switch (pilonsi_clipboard_mode) {
+          case PILONSI_CB_MODE_WIN:
+           tap_code16(C(KC_X));
+            break;
+          
+          case PILONSI_CB_MODE_MAC:
+          default:
+           tap_code16(LCMD(KC_X));
+        }
+      } 
+
+    case KC_UNDO:
+      if (record->event.pressed) {
+        unregister_code16(KC_UNDO);
+        switch (pilonsi_clipboard_mode) {
+          case PILONSI_CB_MODE_WIN:
+           tap_code16(C(KC_Z));
+            break;
+          
+          case PILONSI_CB_MODE_MAC:
+          default:
+           tap_code16(LCMD(KC_Z));
+        }
+      } 
+  }
+  return true;
+}
