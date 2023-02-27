@@ -32,6 +32,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            tap_code16(SCMD(KC_Z));
         }
       } 
+      break;
+
 
     case KC_PSTE:
       if (record->event.pressed) {
@@ -46,6 +48,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            tap_code16(LCMD(KC_V));
         }
       } 
+      break;
+
 
     case KC_COPY:
       if (record->event.pressed) {
@@ -60,6 +64,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            tap_code16(LCMD(KC_C));
         }
       } 
+      break;
+
 
     case KC_CUT:
       if (record->event.pressed) {
@@ -74,6 +80,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            tap_code16(LCMD(KC_X));
         }
       } 
+      break;
+
 
     case KC_UNDO:
       if (record->event.pressed) {
@@ -88,6 +96,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
            tap_code16(LCMD(KC_Z));
         }
       } 
+      break;
+
   }
   return true;
 }
