@@ -6,7 +6,7 @@
       "w": 5,
       "d": true
     },
-    "<center><h4><b>Pilonsi 12.0 layout reference</b></h4></center>"
+    "<center><h4><b>Pilonsi 12.1 layout reference</b></h4></center>"
   ],
   [
     {
@@ -34,6 +34,33 @@
     "T\nSysRq\n}\n]",
     {
       "x": 1,
+      "t": "#000000\n\n\n#00fff0\n\n\n\n\n\n#03ff00",
+      "fa": [
+        3,
+        2,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "Y\n\n\nRedo\n\n\n\n\n\nMode",
+    {
+      "t": "#000000\n\n#fff500\n#00fff0",
+      "fa": [
+        3,
+        2,
+        2,
+        2
+      ]
+    },
+    "U\n\nRmd\nPaste",
+    "I\n\nHud\nCopy",
+    {
       "t": "#000000\n\n#fff500\n#00fff0\n\n\n\n\n\n#03ff00",
       "fa": [
         3,
@@ -48,21 +75,12 @@
         2
       ]
     },
-    "Y\n\nRedo\nRedo\n\n\n\n\n\nMode",
-    {
-      "t": "#000000\n\n#fff500\n#00fff0"
-    },
-    "U\n\nPaste\nPaste",
-    "I\n\nCopy\nCopy",
-    {
-      "t": "#000000\n\n#fff500\n#00fff0\n\n\n\n\n\n#03ff00"
-    },
-    "O\n\nCut\nCut\n\n\n\n\n\nReset",
-    "P\n\nUndo\nUndo\n\n\n\n\n\nBoot"
+    "O\n\nSad\nCut\n\n\n\n\n\nReset",
+    "P\n\nVad\nUndo\n\n\n\n\n\nBoot"
   ],
   [
     {
-      "t": "#000000\n#ff0000\n#03ff00\n#0017ff\n\n\n\n\n\n#fff500",
+      "t": "#000000\n#ff0000\n#03ff00\n#0017ff\n\n\n\n\n\n#00fff0",
       "fa": [
         3,
         3,
@@ -135,11 +153,28 @@
   ],
   [
     {
-      "t": "#000000\n#ff0000\n#03ff00\n#0017ff"
+      "t": "#000000\n#ff0000\n#03ff00\n#0017ff\n\n\n\n\n\n#00fff0",
+      "fa": [
+        0,
+        0,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
     },
-    "Z\nF10\n~\n`",
+    "Z\nF10\n~\n`\n\n\n\n\n\nEsc",
     {
-      "t": "#000000\n#ff0000\n#03ff00\n#0017ff\n\n\n\n\n\n#fff500"
+      "fa": [
+        0,
+        0,
+        2,
+        2
+      ]
     },
     "X\nF1\n!\n1\nAltGr\n\n\n\n\n<i class='kb kb-Return-2'></i>",
     "C\nF2\n@\n2\n\n\n\n\n\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>",
@@ -155,10 +190,10 @@
         0,
         0,
         0,
-        2
+        0
       ]
     },
-    "B\nPs/Brk\n|\n\\\n\n\n\n\n\nEsc",
+    "B\nPs/Brk\n|\n\\",
     {
       "x": 1,
       "t": "#000000\n\n#fff500\n#00fff0",
@@ -207,24 +242,27 @@
     "Spc\nSpc\n)\n0\nNav",
     {
       "t": "#000000\n#ff0000\n#03ff00\n#0017ff\n#fff500",
-      "f2": 2
+      "fa": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ]
     },
     "<i class='kb kb-Tab-1'></i>\n<i class='kb kb-Tab-1'></i>\n_\n-\nExt",
     {
       "x": 1,
-      "t": "#000000\n#c7c7c7\n#fff500\n#00fff0\n#03ff00",
-      "f2": 2
+      "t": "#000000\n#c7c7c7\n#fff500\n#00fff0\n#03ff00"
     },
     "<i class='kb kb-Return-2'></i>\n<i class='kb kb-Multimedia-Mute-1'></i>\n<i class='kb kb-Return-2'></i>\n<i class='kb kb-Return-2'></i>\nSym",
     {
       "t": "#000000\n#c7c7c7\n#fff500\n#00fff0\n#0017ff",
-      "f2": 2,
       "n": true
     },
     "<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>\n<i class='kb kb-Multimedia-Play-Pause'></i>\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>\nNum",
     {
-      "t": "#000000\n#c7c7c7\n#fff500\n#00fff0\n#ff0000",
-      "f2": 2
+      "t": "#000000\n#c7c7c7\n#fff500\n#00fff0\n#ff0000"
     },
     "<i class='mss mss-Unicode-DeleteRight-Big-2'></i>\n<i class='kb kb-Multimedia-Stop'></i>\n<i class='mss mss-Unicode-DeleteRight-Big-2'></i>\n<i class='mss mss-Unicode-DeleteRight-Big-2'></i>\nFun"
   ],
