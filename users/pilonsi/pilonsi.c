@@ -20,16 +20,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     U_NP,         U_NP,         LT(MEDIA, KC_ESC), LT(NAV, KC_SPC), LT(EXT, KC_TAB), LT(SYM, KC_ENT), LT(NUM, KC_BSPC), LT(FUN, KC_DEL), U_NP,           U_NP
   ),
   [NAV] = LAYOUT_pilonsi(
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
-    U_NA,    KC_ALGR, U_NA,    U_NA,    U_NA,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
+    U_NA,          U_NA,           U_NA,          U_NA,        U_NU,    U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
+    LGUI_T(U_UND), LALT_T(U_CUT),  LCTL_T(U_CPY), LSFT(U_PST), U_RDO,   KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
+    KC_ESC,        ALGR_T(KC_ENT), KC_BSPC,       KC_DEL,      U_NU,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
+    U_NP,          U_NP,           U_NA,          U_NA,        U_NU,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
   ),
   [EXT] = LAYOUT_pilonsi(
-    U_NA,          U_NA,           U_NA,          U_NA,        U_NU,    U_RDO,   U_PST,   U_CPY,   U_CUT,   U_UND,
-    LGUI_T(U_UND), LALT_T(U_CUT),  LCTL_T(U_CPY), LSFT(U_PST), U_RDO,   U_NU,    KC_ESC,  KC_DEL,  U_NU,    KC_CAPS,
-    U_NA,          ALGR_T(KC_ENT), KC_BSPC,       KC_DEL,      KC_ESC,  RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
-    U_NP,          U_NP,           U_NA,          U_NA,        U_NU,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    U_NU,    KC_ESC,  KC_DEL,  U_NU,    KC_CAPS,
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
+    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
   ),
   [MEDIA] = LAYOUT_pilonsi(
     U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
