@@ -7,9 +7,40 @@
 
 #include "pilonsi.h"
 
-#include "clipboard_override.c"
+static uint8_t pilonsi_clipboard_mode = PILONSI_CB_MODE_MAC;
+
 #ifdef TAPPING_TERM_PER_KEY
-#include "tap_hold_per_key.c"
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    // Home row mods
+    case LGUI_T(KC_A):
+    case LGUI_T(KC_QUOT):
+      return TAPPING_TERM + 50;
+    case LALT_T(KC_S):
+    case LALT_T(KC_L):
+      return TAPPING_TERM + 40;
+    case LCTL_T(KC_D):
+    case LCTL_T(KC_K):
+      return TAPPING_TERM;
+    case LSFT_T(KC_F):
+    case LSFT_T(KC_J):
+      return TAPPING_TERM - 20;
+
+    // Thumb keys
+    case LT(MEDIA, KC_ESC):
+    case LT(FUN, KC_DEL):
+      return TAPPING_TERM;
+    case LT(NAV, KC_SPC):
+    case LT(NUM, KC_BSPC):
+      return TAPPING_TERM - 20;
+    case LT(EXT, KC_TAB):
+    case LT(SYM, KC_ENT):
+      return TAPPING_TERM - 20;
+
+    default:
+      return TAPPING_TERM;
+  }
+}
 #endif
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
