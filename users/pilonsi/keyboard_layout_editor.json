@@ -1,4 +1,7 @@
 [
+  {
+    "backcolor": "#a1a1a1"
+  },
   [
     {
       "x": 3,
@@ -6,7 +9,7 @@
       "w": 5,
       "d": true
     },
-    "<center><h4><b>Pilonsi 12.1 layout reference</b></h4></center>"
+    "<center><h4><b>Pilonsi 12.2 layout reference</b></h4></center>"
   ],
   [
     {
@@ -34,37 +37,37 @@
     "T\nSysRq\n}\n]",
     {
       "x": 1,
-      "t": "#000000\n\n\n#00fff0\n\n\n\n\n\n#03ff00",
-      "fa": [
-        3,
-        2,
-        3,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        2
-      ]
-    },
-    "Y\n\n\nRedo\n\n\n\n\n\nMode",
-    {
-      "t": "#000000\n\n#fff500\n#00fff0",
-      "fa": [
-        3,
-        2,
-        2,
-        2
-      ]
-    },
-    "U\n\nRmd\nPaste",
-    "I\n\nHud\nCopy",
-    {
       "t": "#000000\n\n#fff500\n#00fff0\n\n\n\n\n\n#03ff00",
       "fa": [
         3,
         2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "Y\n\nOled\nRedo\n\n\n\n\n\nMode",
+    {
+      "t": "#000000\n#ffffff\n#fff500\n#00fff0",
+      "fa": [
+        3,
+        0,
+        2,
+        2
+      ]
+    },
+    "U\n<i class='kb kb-Unicode-Screen-Dim'></i>\nRmd\nPaste",
+    "I\n<i class='kb kb-Unicode-Screen-Bright'></i>\nHud\nCopy",
+    {
+      "t": "#000000\n\n#fff500\n#00fff0\n\n\n\n\n\n#03ff00",
+      "fa": [
+        3,
+        0,
         2,
         2,
         0,
@@ -180,24 +183,13 @@
     "C\nF2\n@\n2\n\n\n\n\n\n<i class='mss mss-Unicode-BackSpace-DeleteLeft-Big-2'></i>",
     "V\nF3\n#\n3\n\n\n\n\n\n<i class='mss mss-Unicode-DeleteRight-Big-2'></i>",
     {
-      "fa": [
-        0,
-        2,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ]
+      "t": "#000000\n#ff0000\n#03ff00\n#0017ff",
+      "f2": 2
     },
     "B\nPs/Brk\n|\n\\",
     {
       "x": 1,
-      "t": "#000000\n\n#fff500\n#00fff0",
-      "f2": 2
+      "t": "#000000\n\n#fff500\n#00fff0"
     },
     "N\n\nTog\nHome",
     "M\n\nMod\nPgDn",
@@ -220,7 +212,22 @@
       ]
     },
     ".\n\nSai\nEnd\nAltGr",
-    "/\n\nVai\nIns"
+    {
+      "t": "#000000\n\n#fff500\n#00fff0\n\n\n\n\n\n#03ff00",
+      "fa": [
+        1,
+        2,
+        2,
+        2,
+        2,
+        0,
+        0,
+        0,
+        0,
+        2
+      ]
+    },
+    "/\n\nVai\nIns\n\n\n\n\n\nVersion"
   ],
   [
     {
