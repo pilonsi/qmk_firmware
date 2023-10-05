@@ -6,7 +6,6 @@
 
     case U_CBM:
       if (record->event.pressed) {
-        unregister_code16(U_CBM);
         if (pilonsi_clipboard_mode == PILONSI_CB_MODE_MAC){
           pilonsi_clipboard_mode = PILONSI_CB_MODE_WIN;
         } else {
@@ -93,3 +92,21 @@
         }
       } 
       break;
+
+    case U_VER:
+      if (record->event.pressed) {
+        SEND_STRING(PILONSI_VERSION_STRING);
+      }
+      break;  
+
+#ifdef OLED_ENABLE
+    case U_OLED:
+      if (record->event.pressed) {
+        if (is_oled_on()) {
+          oled_off();
+        } else {
+          oled_on();
+        }
+      }
+      break;
+#endif
