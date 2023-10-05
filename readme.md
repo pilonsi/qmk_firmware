@@ -7,7 +7,7 @@
 [![GitHub forks](https://img.shields.io/github/forks/qmk/qmk_firmware.svg?style=social&label=Fork)](https://github.com/qmk/qmk_firmware/)
 
 > [!NOTE]
->	This is my personal fork of QMK to host and develop my personal keymap. For more information check its [directory](/users/pilonsi).
+>	This is my personal fork of QMK to host and develop my keymap. For more information check its [directory](users/pilonsi).
 
 This is a keyboard firmware based on the [tmk\_keyboard firmware](https://github.com/tmk/tmk_keyboard) with some useful features for Atmel AVR and ARM controllers, and more specifically, the [OLKB product line](https://olkb.com), the [ErgoDox EZ](https://ergodox-ez.com) keyboard, and the Clueboard product line.
 
