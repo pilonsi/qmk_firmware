@@ -9,17 +9,17 @@
 
 #include QMK_KEYBOARD_H
 
+#define PILONSI_VERSION_STRING "Pilonsi 12.2"
+
 enum layers { BASE, MEDIA, NAV, EXT, SYM, NUM, FUN };
 
 /* Keycodes */
+enum my_keycodes { U_OLED, U_CBM, U_VER };
 
 // Miryoku unused keycodes
 #define U_NP KC_NO // key is not present
 #define U_NA KC_NO // present but not available for use
 #define U_NU KC_NO // available but not used
-
-// Clipboard setting
-#define U_CBM KC_MAIL
 
 // Clipboard options
 #if defined PILONSI_FIXED_CLIPBOARD_MAC
