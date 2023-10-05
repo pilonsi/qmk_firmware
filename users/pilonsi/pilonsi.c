@@ -57,7 +57,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     U_NP,          U_NP,           U_NA,          U_NA,        U_NU,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
   ),
   [EXT] = LAYOUT_pilonsi(
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD,
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_OLED,  RGB_RMOD,RGB_HUD, RGB_SAD, RGB_VAD,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    U_NU,    KC_ESC,  KC_DEL,  U_NU,    KC_CAPS,
     U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    RGB_TOG, RGB_MOD, RGB_HUI, RGB_SAI, RGB_VAI,
     U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
@@ -77,7 +77,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [SYM] = LAYOUT_pilonsi(
     KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, U_CBM,   U_NA,    U_NA,    QK_RBT,  QK_BOOT,
     KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, U_NA,    U_NA,    U_NA,    KC_ALGR, U_VER,
     U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
   ),
   [FUN] = LAYOUT_pilonsi(

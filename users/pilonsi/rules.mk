@@ -3,10 +3,11 @@
 # My personal 36-key layout based off a modified version of the wonderful Miryoku layout, by Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
-MOUSEKEY_ENABLE = no # Mouse keys
+MOUSEKEY_ENABLE = no
 EXTRAKEY_ENABLE = yes # Audio control and System control
-AUTO_SHIFT_ENABLE = no # Auto Shift
-CAPS_WORD_ENABLE = yes # Caps Word
+AUTO_SHIFT_ENABLE = no
+CAPS_WORD_ENABLE = yes
+SEND_STRING_ENABLE = yes
 
 # Optimizations
 LTO_ENABLE = yes
