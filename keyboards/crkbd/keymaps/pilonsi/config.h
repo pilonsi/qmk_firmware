@@ -41,9 +41,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define RGB_MATRIX_SPD_STEP 10
 
 // RGB Matrix animations
-#define ENABLE_RGB_MATRIX_BREATHING
 #define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#define ENABLE_RGB_MATRIX_SOLID_REACTIVE
+#define RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
 
 #define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
 
