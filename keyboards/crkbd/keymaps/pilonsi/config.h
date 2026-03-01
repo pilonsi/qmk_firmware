@@ -4,7 +4,7 @@ This is the c configuration file for the keymap
 Copyright 2012 Jun Wako <wakojun@gmail.com>
 Copyright 2015 Jack Humbert
 Copyright 2019 Manna Harbour
-Copyright 2023 Pilonsi
+Copyright 2023-2026 Pilonsi
 
 My personal 36-key layout based off a modified version of the wonderful
 Miryoku layout, by Manna Harbour.
@@ -31,21 +31,23 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define USE_SERIAL_PD2
 
 // RGB Matrix
-#define RGB_MATRIX_KEYPRESSES // reacts to keypresses
 #define RGB_DISABLE_WHEN_USB_SUSPENDED // turn off effects when suspended
-#define RGB_MATRIX_FRAMEBUFFER_EFFECTS
-#define RGB_MATRIX_MAXIMUM_BRIGHTNESS 150 // limits maximum brightness of LEDs to 150 out of 255. Higher may cause the controller to crash. 
 #define RGB_MATRIX_HUE_STEP 1
 #define RGB_MATRIX_SAT_STEP 1
 #define RGB_MATRIX_VAL_STEP 1
 #define RGB_MATRIX_SPD_STEP 10
+//#define RGB_MATRIX_SPLIT { 27, 27 }
+#define SPLIT_LAYER_STATE_ENABLE
+#define SPLIT_LED_STATE_ENABLE
 
-// RGB Matrix animations
-#define ENABLE_RGB_MATRIX_JELLYBEAN_RAINDROPS
-#define RGB_MATRIX_SOLID_REACTIVE_MULTINEXUS
+// Enabled animations. Just solid color to save space on the Elite C
+#define ENABLE_RGB_MATRIX_SOLID_COLOR
 
-#define OLED_FONT_H "keyboards/crkbd/lib/glcdfont.c"
+// OLED
+#define OLED_BRIGHTNESS 64
+#define OLED_TIMEOUT 30000
 
+// Layout
 #define LAYOUT_pilonsi(\
 K00,   K01,   K02,   K03,   K04,          K05,   K06,   K07,   K08,   K09,\
 K10,   K11,   K12,   K13,   K14,          K15,   K16,   K17,   K18,   K19,\
