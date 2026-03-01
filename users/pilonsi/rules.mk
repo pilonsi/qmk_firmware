@@ -8,9 +8,11 @@ EXTRAKEY_ENABLE = yes # Audio control and System control
 AUTO_SHIFT_ENABLE = no
 CAPS_WORD_ENABLE = yes
 SEND_STRING_ENABLE = yes
+UNICODE_ENABLE = yes
 
 # Optimizations
 LTO_ENABLE = yes
+VIA_ENABLE = no
 CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 MOUSEKEY_ENABLE = no
