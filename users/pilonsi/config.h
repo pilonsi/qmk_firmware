@@ -1,5 +1,5 @@
 // Copyright 2019 Manna Harbour
-// Copyright 2023 Pilonsi
+// Copyright 2023-2026 Pilonsi
 // My personal 36-key layout based off a modified version of the wonderful Miryoku layout, by Manna Harbour
 // https://github.com/manna-harbour/miryoku
 
@@ -7,13 +7,17 @@
 
 #pragma once
 
-// default but used in macros
 #undef TAPPING_TERM
-#define TAPPING_TERM 170
-#define TAPPING_TERM_PER_KEY
+#define TAPPING_TERM 250
+
+#define CHORDAL_HOLD
+#define PERMISSIVE_HOLD
+#define FLOW_TAP_TERM 150
+#define SPECULATIVE_HOLD
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define TAPPING_FORCE_HOLD
+#define QUICK_TAP_TERM 0
 
 // Recommended for heavy chording.
 #define QMK_KEYS_PER_SCAN 4
+
