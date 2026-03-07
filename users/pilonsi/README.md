@@ -1,9 +1,15 @@
-# My QMK Layout
-This is my personal 36-key layout, it is a modified version of the wonderful [Miryoku](https://github.com/manna-harbour/miryoku/) layout by Manna Harbour.
+# Pilonsi layout version 15
+This is my personal 36-key layout, it is an evolved version of Miryoku with
+callum style mods and tweaks to suit my workflow. It also includes a few
+unicode wrappers to input catalan characters.
 
-![Layout Reference](https://i.imgur.com/41igRwu.png)
-
-The layout as-is here is intended to be used with the following setup:
+The layout is intended to be used with the following setup:
 
 - US Keyboard Layout
 - Corne or Ergodox EZ keyboards
+
+![Layout Reference](https://i.imgur.com/QM1bEYS.png)
+
+## Acknowledgements
+- [Miryoku](https://github.com/manna-harbour/miryoku)
+- [Callum](https://github.com/callum-oakley/qmk_firmware/tree/master/users/callum)
