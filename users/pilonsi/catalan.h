@@ -12,38 +12,9 @@
 // <http://www.gnu.org/licenses/>.
 
 #pragma once
+#include "quantum.h"
 
-#include QMK_KEYBOARD_H
+enum dead_key_states { DK_NONE, DK_ACUTE, DK_GRAVE, DK_DIERESIS };
 
-#define PILONSI_VERSION_STRING "15.0pre0"
-
-enum layers { BASE, NUM, SYM, CAT, NAV, FUN };
-
-enum my_keycodes {
-  // Custom settings
-  P_MODE = SAFE_RANGE, // Cycle OS mode
-  P_SAVE,	// Save OS mode
-  P_OLED, // Toggle OLED
-  P_VER,  // Show version string
-
-  // OS dependent shortcuts
-  P_RDO,
-  P_PST,
-  P_CPY,
-  P_CUT,
-  P_UND,
-
-  // Catalan characters
-  CA_CC,  // Ç
-  CA_AT,  // ´
-  CA_AO,  // `
-  CA_DI,  // ¨
-  CA_PV,  // ·
-  CA_NY,  // Ñ
-	CA_EX,  // ¡
-	CA_IN		// ¿
-};
-
-#define U_NP KC_NO // key is not present
-#define U_NA KC_NO // present but not available for use
-#define U_NU KC_NO // available but not used
+bool catalan_handle_dead_keys(uint16_t, bool);
+bool catalan_process_record(uint16_t, bool);
