@@ -14,5 +14,5 @@
 #pragma once
 #include "quantum.h"
 
-void os_cycle_mode(void);
-bool os_process_record(uint16_t keycode);
+void hostos_cycle(void);
+bool hostos_process_record(uint16_t keycode);

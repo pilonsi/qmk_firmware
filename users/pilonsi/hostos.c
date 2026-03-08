@@ -12,12 +12,11 @@
 // <http://www.gnu.org/licenses/>.
 
 #include "pilonsi.h"
-#include "os.h"
 
 // Switch unicode mode without saving to EEPROM
 // We se the unicode settings saved to the EEPROM by QMK to restore our OS
 // state and save unnecessary EEPROM writes.
-void os_cycle_mode(void) {
+void hostos_cycle(void) {
   switch (unicode_config.input_mode) {
     case UNICODE_MODE_MACOS:    
       unicode_config.input_mode = UNICODE_MODE_WINCOMPOSE;
@@ -34,7 +33,7 @@ void os_cycle_mode(void) {
   unicode_input_mode_set_kb(unicode_config.input_mode);
 }
 
-bool os_process_record(uint16_t keycode) {
+bool hostos_process_record(uint16_t keycode) {
   bool is_mac = (unicode_config.input_mode == UNICODE_MODE_MACOS);
 
   switch (keycode) {
@@ -61,7 +60,7 @@ bool os_process_record(uint16_t keycode) {
       set_unicode_input_mode(unicode_config.input_mode);
       return false;
     case P_MODE:
-      os_cycle_mode();
+      hostos_cycle();
       return false;
   }
 
