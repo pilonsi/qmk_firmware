@@ -12,7 +12,6 @@
 // <http://www.gnu.org/licenses/>.
 
 #include "pilonsi.h"
-#include "catalan.h"
 
 static enum dead_key_states dead_key_state = DK_NONE;
 

@@ -8,7 +8,7 @@ The layout is intended to be used with the following setup:
 - US Keyboard Layout
 - Corne or Ergodox EZ keyboards
 
-![Layout Reference](https://i.imgur.com/QM1bEYS.png)
+![Layout Reference](https://i.imgur.com/9K4xpra.png)
 
 ## Acknowledgements
 - [Miryoku](https://github.com/manna-harbour/miryoku)

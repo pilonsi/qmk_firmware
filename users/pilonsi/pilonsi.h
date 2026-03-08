@@ -14,15 +14,18 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+#include "oneshot.h"
+#include "hostos.h"
+#include "catalan.h"
 
-#define PILONSI_VERSION_STRING "15.0pre0"
+#define PILONSI_VERSION_STRING "15.0pre1"
 
-enum layers { BASE, NUM, SYM, CAT, NAV, FUN };
+enum layers { BASE, NUM, SYM, CAT, NAV, FUN, MAC };
 
 enum my_keycodes {
   // Custom settings
-  P_MODE = SAFE_RANGE, // Cycle OS mode
-  P_SAVE,	// Save OS mode
+  P_MODE = SAFE_RANGE, // Cycle operating system mode
+  P_SAVE,	// Save operating system mode
   P_OLED, // Toggle OLED
   P_VER,  // Show version string
 
@@ -32,6 +35,13 @@ enum my_keycodes {
   P_CPY,
   P_CUT,
   P_UND,
+
+	// Callum oneshot implementation
+	OS_SFT,
+	OS_CTL,
+	OS_ALT,
+	OS_GUI,
+	OS_ALGR,
 
   // Catalan characters
   CA_CC,  // Ç
@@ -43,6 +53,11 @@ enum my_keycodes {
 	CA_EX,  // ¡
 	CA_IN		// ¿
 };
+
+#define LA_NAV MO(NAV)
+#define LA_CAT MO(CAT)
+#define LA_SYM MO(SYM)
+#define LA_NUM MO(NUM)
 
 #define U_NP KC_NO // key is not present
 #define U_NA KC_NO // present but not available for use

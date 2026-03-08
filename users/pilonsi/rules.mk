@@ -11,7 +11,8 @@
 # General Public License along with this program. If not, see
 # <http://www.gnu.org/licenses/>.
 
-SRC += os.c
+SRC += oneshot.c
+SRC += hostos.c
 SRC += catalan.c
 
 MOUSEKEY_ENABLE = no
