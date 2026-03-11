@@ -7,5 +7,9 @@
 
 #pragma once
 
+// For SM_TD
+#undef MAX_DEFERRED_EXECUTORS
+#define MAX_DEFERRED_EXECUTORS 10
+
 #undef TAPPING_TERM
 #define TAPPING_TERM 200

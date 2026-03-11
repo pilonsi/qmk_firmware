@@ -1,0 +1,11 @@
+" .vimrc for Linux Kernel Developement
+
+source ~/.vimrc
+
+set nu
+filetype plugin indent on
+syn on se title
+set tabstop=2
+set expandtab
+set list listchars=tab:»\ ,trail:.,extends:»,precedes:«
+set ai

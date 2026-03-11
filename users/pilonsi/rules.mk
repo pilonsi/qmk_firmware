@@ -3,8 +3,12 @@
 # My personal 36-key layout based off a modified version of the wonderful Miryoku layout, by Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
+SRC += sm_td.c
 SRC += hostos.c
 SRC += catalan.c
+
+# For SM_TD
+DEFERRED_EXEC_ENABLE = yes
 
 MOUSEKEY_ENABLE = no
 EXTRAKEY_ENABLE = yes # Audio control and System control

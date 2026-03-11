@@ -17,6 +17,7 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+#include "sm_td.h"
 #include "hostos.h"
 #include "catalan.h"
 
@@ -27,7 +28,7 @@ enum layers { BASE, MEDIA, NAV, CAT, SYM, NUM, FUN };
 enum my_keycodes {
   // Custom settings
   P_MODE = SAFE_RANGE, // Cycle OS mode
-  P_SAVE,	// Save OS mode
+  P_SAVE,  // Save OS mode
   P_OLED, // Toggle OLED
   P_VER,  // Show version string
 

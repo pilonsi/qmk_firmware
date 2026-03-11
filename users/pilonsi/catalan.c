@@ -18,8 +18,8 @@ static enum dead_key_states dead_key_state = DK_NONE;
 bool catalan_handle_dead_keys(uint16_t keycode, bool is_shifted) {
   bool handled = false;
 
-	// Strip wrappers from keys
-	uint16_t basic_keycode = keycode & 0x00FF;
+  // Strip wrappers from keys
+  uint16_t basic_keycode = keycode & 0x00FF;
 
   if (dead_key_state == DK_ACUTE) {
     switch (basic_keycode) {
@@ -86,7 +86,7 @@ bool catalan_process_record(uint16_t keycode, bool is_shifted) {
     }
   }
 
-	// 1nd pass sends direct chars and sets the dead key var.
+  // 1nd pass sends direct chars and sets the dead key var.
   switch (keycode) {
     case CA_AT:
       dead_key_state = DK_ACUTE;
@@ -113,14 +113,14 @@ bool catalan_process_record(uint16_t keycode, bool is_shifted) {
       send_unicode_string("·");
       return true;
 
-		case CA_EX:
-			send_unicode_string("¡");
-			return true;
+    case CA_EX:
+      send_unicode_string("¡");
+      return true;
 
-		case CA_IN:
-			send_unicode_string("¿");
-			return true;
+    case CA_IN:
+      send_unicode_string("¿");
+      return true;
   }
 
-	return false;
+  return false;
 }
