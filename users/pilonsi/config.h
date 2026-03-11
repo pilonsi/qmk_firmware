@@ -8,16 +8,4 @@
 #pragma once
 
 #undef TAPPING_TERM
-#define TAPPING_TERM 250
-
-#define CHORDAL_HOLD
-#define PERMISSIVE_HOLD
-#define FLOW_TAP_TERM 150
-#define SPECULATIVE_HOLD
-
-// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
-#define QUICK_TAP_TERM 0
-
-// Recommended for heavy chording.
-#define QMK_KEYS_PER_SCAN 4
-
+#define TAPPING_TERM 200

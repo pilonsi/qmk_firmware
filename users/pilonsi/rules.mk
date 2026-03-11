@@ -3,6 +3,9 @@
 # My personal 36-key layout based off a modified version of the wonderful Miryoku layout, by Manna Harbour
 # https://github.com/manna-harbour/miryoku
 
+SRC += hostos.c
+SRC += catalan.c
+
 MOUSEKEY_ENABLE = no
 EXTRAKEY_ENABLE = yes # Audio control and System control
 AUTO_SHIFT_ENABLE = no

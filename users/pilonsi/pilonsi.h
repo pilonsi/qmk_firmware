@@ -17,16 +17,12 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
+#include "hostos.h"
+#include "catalan.h"
 
-#define PILONSI_VERSION_STRING "14.0"
+#define PILONSI_VERSION_STRING "14.1pre0"
 
 enum layers { BASE, MEDIA, NAV, CAT, SYM, NUM, FUN };
-
-enum dead_key_states { DK_NONE, DK_ACUTE, DK_GRAVE, DK_DIERESIS };
-
-#define U_NP KC_NO // key is not present
-#define U_NA KC_NO // present but not available for use
-#define U_NU KC_NO // available but not used
 
 enum my_keycodes {
   // Custom settings
@@ -49,4 +45,10 @@ enum my_keycodes {
   CA_DI,  // ¨
   CA_PV,  // ·
   CA_NY,  // Ñ
+  CA_EX,  // ¡
+  CA_IN,  // ¿
 };
+
+#define U_NP KC_NO // key is not present
+#define U_NA KC_NO // present but not available for use
+#define U_NU KC_NO // available but not used

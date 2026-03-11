@@ -16,201 +16,6 @@
 
 #include "pilonsi.h"
 
-static enum dead_key_states dead_key_state = DK_NONE;
-
-// Switch unicode mode without saving to EEPROM
-// We se the unicode settings saved to the EEPROM by QMK to restore our OS
-// state and save unnecessary EEPROM writes.
-void pilonsi_cycle_os_mode(void) {
-  switch (unicode_config.input_mode) {
-    case UNICODE_MODE_MACOS:    
-      unicode_config.input_mode = UNICODE_MODE_WINCOMPOSE;
-      break;
-    case UNICODE_MODE_WINCOMPOSE: 
-      unicode_config.input_mode = UNICODE_MODE_LINUX;
-      break;
-    case UNICODE_MODE_LINUX:    
-      unicode_config.input_mode = UNICODE_MODE_MACOS;
-      break;
-    default: unicode_config.input_mode = UNICODE_MODE_LINUX;
-  }
-
-  unicode_input_mode_set_kb(unicode_config.input_mode);
-}
-
-bool pilonsi_handle_os_shortcuts(uint16_t keycode) {
-  bool is_mac = (unicode_config.input_mode == UNICODE_MODE_MACOS);
-
-  switch (keycode) {
-    case P_CPY:
-      tap_code16(is_mac ? LCMD(KC_C) : C(KC_C));
-      return true;
-    case P_PST:
-      tap_code16(is_mac ? LCMD(KC_V) : C(KC_V));
-      return true;
-    case P_CUT:
-      tap_code16(is_mac ? LCMD(KC_X) : C(KC_X));
-      return true;
-    case P_UND:
-      tap_code16(is_mac ? LCMD(KC_Z) : C(KC_Z));
-      return true;
-    case P_RDO:
-      tap_code16(is_mac ? S(LCMD(KC_Z)) : C(KC_Y));
-      return true;
-  }
-
-  return false;
-}
-
-bool pilonsi_handle_dead_keys(uint16_t keycode, bool is_shifted) {
-  bool handled = false;
-
-	// Strip mod-tap and other wrappers from keys
-	uint16_t basic_keycode = keycode & 0x00FF;
-
-  if (dead_key_state == DK_ACUTE) {
-    switch (basic_keycode) {
-      case KC_A:
-        send_unicode_string(is_shifted ? "Á" : "á");
-        handled = true;
-        break;
-      case KC_E:
-        send_unicode_string(is_shifted ? "É" : "é");
-        handled = true;
-        break;
-      case KC_I:
-        send_unicode_string(is_shifted ? "Í" : "í");
-        handled = true;
-        break;
-      case KC_O:
-        send_unicode_string(is_shifted ? "Ó" : "ó");
-        handled = true;
-        break;
-      case KC_U:
-        send_unicode_string(is_shifted ? "Ú" : "ú");
-        handled = true;
-        break;
-    }
-  } else if (dead_key_state == DK_GRAVE) {
-    switch (keycode) {
-      case KC_A:
-        send_unicode_string(is_shifted ? "À" : "à");
-        handled = true;
-        break;
-      case KC_E:
-        send_unicode_string(is_shifted ? "È" : "è");
-        handled = true;
-        break;
-      case KC_O:
-        send_unicode_string(is_shifted ? "Ò" : "ò");
-        handled = true;
-        break;
-    }
-  } else if (dead_key_state == DK_DIERESIS) {
-    switch (keycode) {
-      case KC_U:
-        send_unicode_string(is_shifted ? "Ü" : "ü");
-        handled = true;
-        break;
-      case KC_I:
-        send_unicode_string(is_shifted ? "Ï" : "ï");
-        handled = true;
-        break;
-    }
-  }
-
-  dead_key_state = DK_NONE;
-  return handled;
-}
-
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!record->event.pressed) { return true; }
-
-  bool is_shifted = (get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT;
-
-  // Handle OS shortcuts if present
-  if (pilonsi_handle_os_shortcuts(keycode)) {
-    return false;
-  }
-
-  // Intercept dead keys for catalan characters
-  if (dead_key_state != DK_NONE) {
-    if (pilonsi_handle_dead_keys(keycode, is_shifted)) {
-      return false;
-    }
-  }
-
-  // Otherwise continue processing the rest of the custom keycodes
-  switch (keycode) {
-    // Catalan: Dead keys
-    case CA_AT:
-      dead_key_state = DK_ACUTE;
-      return false;  
-
-    case CA_AO:
-      dead_key_state = DK_GRAVE;
-      return false;  
-
-    case CA_DI:
-      dead_key_state = DK_DIERESIS;
-      return false;  
-
-    // Catalan: Direct keys
-    case CA_CC:
-      send_unicode_string(is_shifted ? "Ç" : "ç");
-      return false;  
-
-    case CA_NY:
-      send_unicode_string(is_shifted ? "Ñ" : "ñ");
-      return false;  
-
-    case CA_PV:
-      send_unicode_string("·");
-      return false;  
-
-    // OS Mode switching logic
-    case P_SAVE:
-      // This calls a routine to save mode to eeprom. Mode setting below
-      // modifies the unicode_config struct directly, so this just sets it 
-      // to the already configured value to store it.
-      set_unicode_input_mode(unicode_config.input_mode);
-      return false;
-
-    case P_MODE:
-      pilonsi_cycle_os_mode();
-      return false;
-
-    // OLED toggle
-    #ifdef OLED_ENABLE
-    case P_OLED:
-      if (is_oled_on()) {
-        oled_off();
-      } else {
-        oled_on();
-      }  
-      return false;
-    #endif
-
-    // Show version string
-    case P_VER:
-      SEND_STRING(PILONSI_VERSION_STRING);
-      return false;
-
-
-    default:
-      return true;
-
-  }
-}
-
-const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
-  LAYOUT_pilonsi(
-    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
-    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
-    'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
-    'L', 'L', '*', '*', '*',  '*', '*', '*', 'R', 'R'
-);
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_pilonsi(
     KC_Q,         KC_W,         KC_E,              KC_R,            KC_T,            KC_Y,            KC_U,             KC_I,            KC_O,           KC_P,
@@ -256,3 +61,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!record->event.pressed) { return true; }
+
+  bool is_shifted = (get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT;
+
+
+  // Handle os shortcuts
+  if (hostos_process_record(keycode)) {
+    return false;
+  }
+
+  // Process catalan keycodes
+  if (catalan_process_record(keycode, is_shifted)) {
+    return false;
+  }
+
+  switch (keycode) {
+    // OLED toggle
+    #ifdef OLED_ENABLE
+    case P_OLED:
+      if (is_oled_on()) {
+        oled_off();
+      } else {
+        oled_on();
+      }  
+      return false;
+    #endif
+
+    // Show version string
+    case P_VER:
+      SEND_STRING(PILONSI_VERSION_STRING);
+      return false;
+
+    default:
+      return true;
+  }
+}
