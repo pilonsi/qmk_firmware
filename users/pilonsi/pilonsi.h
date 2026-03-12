@@ -43,7 +43,7 @@ enum combos {
 enum my_keycodes {
   // Custom settings
   P_MODE = SAFE_RANGE, // Cycle operating system mode
-  P_SAVE,	// Save operating system mode
+  P_SAVE,  // Save operating system mode
   P_OLED, // Toggle OLED
   P_VER,  // Show version string
 
@@ -54,13 +54,13 @@ enum my_keycodes {
   P_CUT,
   P_UND,
 
-	// Callum oneshot implementation
-	OS_SFT,
-	OS_CTL,
-	OS_ALT,
-	OS_GUI,
-	OS_AGUI,
-	OS_CSFT,
+  // Callum oneshot implementation
+  OS_SFT,
+  OS_CTL,
+  OS_ALT,
+  OS_GUI,
+  OS_AGUI,
+  OS_CSFT,
 
   // Catalan characters
   CA_CC,  // Ç
@@ -68,9 +68,11 @@ enum my_keycodes {
   CA_AO,  // `
   CA_DI,  // ¨
   CA_PV,  // ·
+  CA_EX,  // ¡
+  CA_IN,  // ¿
+
+  // Universal characters
   CA_NY,  // Ñ
-	CA_EX,  // ¡
-	CA_IN,	// ¿
 
   // Dummy keycodes to trigger layer switch combos
   CL_SYM1,
