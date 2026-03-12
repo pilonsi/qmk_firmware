@@ -59,7 +59,8 @@ enum my_keycodes {
 	OS_CTL,
 	OS_ALT,
 	OS_GUI,
-	OS_ALGR,
+	OS_AGUI,
+	OS_CSFT,
 
   // Catalan characters
   CA_CC,  // Ç
@@ -79,9 +80,9 @@ enum my_keycodes {
 };
 
 #define LA_NAV MO(NAV)
-#define LA_CAT MO(CAT)
-#define LA_SYM MO(SYM)
 #define LA_NUM MO(NUM)
+#define LA_SYM MO(SYM)
+#define LA_CAT MO(CAT)
 
 #define U_NP KC_NO // key is not present
 #define U_NA KC_NO // present but not available for use
