@@ -18,9 +18,27 @@
 #include "hostos.h"
 #include "catalan.h"
 
-#define PILONSI_VERSION_STRING "15.0pre1"
+#define PILONSI_VERSION_STRING "15.0pre2"
 
-enum layers { BASE, NUM, SYM, CAT, NAV, FUN, MAC };
+enum layers { BASE, NUM, SYM, CAT, NAV, FUN };
+
+enum combos { 
+  QW_ALTSUPER,
+  ER_CTRLSHFT,
+  AS_ALT,
+  DF_SHFT,
+  ZX_GUI,
+  CV_CTRL,
+  OP_ALTSUPER,
+  UI_CTRLSHFT,
+  LQUOT_ALT,
+  JK_SHFT,
+  DOTSLSH_SUPER,
+  MCOMM_CTRL,
+
+  COMB_SYM,
+  COMB_CAT
+};
 
 enum my_keycodes {
   // Custom settings
@@ -51,7 +69,13 @@ enum my_keycodes {
   CA_PV,  // ·
   CA_NY,  // Ñ
 	CA_EX,  // ¡
-	CA_IN		// ¿
+	CA_IN,	// ¿
+
+  // Dummy keycodes to trigger layer switch combos
+  CL_SYM1,
+  CL_SYM2,
+  CL_CAT1,
+  CL_CAT2
 };
 
 #define LA_NAV MO(NAV)
