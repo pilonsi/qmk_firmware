@@ -86,10 +86,40 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 bool is_oneshot_cancel_key(uint16_t keycode) {
 	switch (keycode) {
-		case LA_NAV:
-		case LA_CAT:
-		case LA_SYM:
-		case LA_NUM:
+    case KC_Q:
+    case KC_W:
+    case KC_E:
+    case KC_R:
+    case KC_T:
+    case KC_Y:
+    case KC_U:
+    case KC_I:
+    case KC_O:
+    case KC_P:
+    case KC_A:
+    case KC_S:
+    case KC_D:
+    case KC_F:
+    case KC_G:
+    case KC_H:
+    case KC_J:
+    case KC_K:
+    case KC_L:
+    case KC_QUOT:
+    case KC_Z:
+    case KC_X:
+    case KC_C:
+    case KC_V:
+    case KC_B:
+    case KC_N:
+    case KC_M:
+    case KC_COMM:
+    case KC_DOT:
+    case KC_SLSH:
+    case KC_SPC:
+    case KC_TAB:
+    case KC_ENT:
+    case KC_BSPC:
 			return true;
 	}
 	return false;
@@ -98,13 +128,15 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
 bool is_oneshot_ignored_key(uint16_t keycode) {
 	switch (keycode) {
 		case LA_NAV:
-		case LA_CAT:
-		case LA_SYM:
 		case LA_NUM:
+		case LA_SYM:
+		case LA_CAT:
 		case OS_SFT:
 		case OS_CTL:
 		case OS_ALT:
 		case OS_GUI:
+		case OS_AGUI:
+		case OS_CSFT:
 			return true;
 	}
 	return false;
@@ -114,7 +146,8 @@ oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 oneshot_state os_alt_state = os_up_unqueued;
 oneshot_state os_gui_state = os_up_unqueued;
-oneshot_state os_algr_state = os_up_unqueued;
+oneshot_state os_agui_state = os_up_unqueued;
+oneshot_state os_csft_state = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	// Callum oneshot modifiers
@@ -139,7 +172,12 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 	);
 
 	update_oneshot(
-		&os_algr_state, KC_ALGR, OS_ALGR,
+		&os_csft_state, LCTL(KC_LSFT), OS_CSFT,
+		keycode, record
+	);
+
+	update_oneshot(
+		&os_agui_state, LALT(KC_LGUI), OS_AGUI,
 		keycode, record
 	);
 
