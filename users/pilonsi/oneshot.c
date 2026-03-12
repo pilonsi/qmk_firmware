@@ -11,7 +11,7 @@ void update_oneshot(
         if (record->event.pressed) {
             // Trigger keydown
             if (*state == os_up_unqueued) {
-                register_code(mod);
+                register_code16(mod);
             }
             *state = os_down_unused;
         } else {
@@ -24,7 +24,7 @@ void update_oneshot(
             case os_down_used:
                 // If we did use the mod while trigger was held, unregister it.
                 *state = os_up_unqueued;
-                unregister_code(mod);
+                unregister_code16(mod);
                 break;
             default:
                 break;
@@ -32,10 +32,12 @@ void update_oneshot(
         }
     } else {
         if (record->event.pressed) {
-            if (is_oneshot_cancel_key(keycode) && *state != os_up_unqueued) {
-                // Cancel oneshot on designated cancel keydown.
+            if (is_oneshot_cancel_key(keycode) && *state == os_up_queued) {
+                // Cancel oneshot on designated cancel keydown only if the 
+                // modifier was released. Hold + cancel key still yields
+                // the modded cancel key.
                 *state = os_up_unqueued;
-                unregister_code(mod);
+                unregister_code16(mod);
             }
         } else {
             if (!is_oneshot_ignored_key(keycode)) {
@@ -46,7 +48,7 @@ void update_oneshot(
                     break;
                 case os_up_queued:
                     *state = os_up_unqueued;
-                    unregister_code(mod);
+                    unregister_code16(mod);
                     break;
                 default:
                     break;
