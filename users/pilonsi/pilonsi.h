@@ -20,7 +20,7 @@
 
 #define PILONSI_VERSION_STRING "15.0pre2"
 
-enum layers { BASE, NUM, SYM, CAT, NAV, FUN };
+enum layers { BASE, NUM, NAV, SYM, CAT, FUN };
 
 enum combos { 
   QW_ALTSUPER,
