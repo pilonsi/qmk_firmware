@@ -13,4 +13,6 @@
 
 #pragma once
 
-#define COMBO_TERM 50
+#undef  COMBO_TERM
+#define COMBO_TERM 40
+#define COMBO_TERM_PER_COMBO
