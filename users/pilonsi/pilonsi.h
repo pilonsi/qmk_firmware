@@ -18,23 +18,23 @@
 #include "hostos.h"
 #include "catalan.h"
 
-#define PILONSI_VERSION_STRING "15.0pre2"
+#define PILONSI_VERSION_STRING "15.0"
 
 enum layers { BASE, NUM, NAV, SYM, CAT, FUN };
 
 enum combos { 
-  QW_ALTSUPER,
-  ER_CTRLSHFT,
-  AS_ALT,
-  DF_SHFT,
-  ZX_GUI,
-  CV_CTRL,
-  OP_ALTSUPER,
-  UI_CTRLSHFT,
-  LQUOT_ALT,
-  JK_SHFT,
-  DOTSLSH_SUPER,
-  MCOMM_CTRL,
+  QW_CTLALT,
+  ER_SFTGUI,
+  AS_CTL,
+  DF_SFT,
+  ZX_ALT,
+  CV_GUI,
+  OP_CTLALT,
+  UI_SFTGUI,
+  LQUOT_CTL,
+  JK_SFT,
+  DOTSLSH_ALT,
+  MCOMM_GUI,
 
   COMB_SYM,
   COMB_CAT
@@ -59,8 +59,8 @@ enum my_keycodes {
   OS_CTL,
   OS_ALT,
   OS_GUI,
-  OS_AGUI,
-  OS_CSFT,
+  OS_CALT,
+  OS_SGUI,
 
   // Catalan characters
   CA_CC,  // Ç

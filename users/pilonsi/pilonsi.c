@@ -29,18 +29,18 @@ const uint16_t PROGMEM sym_combo[] = {CL_SYM1, CL_SYM2, COMBO_END};
 const uint16_t PROGMEM cat_combo[] = {CL_CAT1, CL_CAT2, COMBO_END};
 
 combo_t key_combos[] = {
-  [QW_ALTSUPER] = COMBO(qw_combo, OS_AGUI),
-  [ER_CTRLSHFT] = COMBO(er_combo, OS_CSFT),
-  [AS_ALT] = COMBO(as_combo, OS_ALT),
-  [DF_SHFT] = COMBO(df_combo, OS_SFT),
-  [ZX_GUI] = COMBO(zx_combo, OS_GUI),
-  [CV_CTRL] = COMBO(cv_combo, OS_CTL),
-  [OP_ALTSUPER] = COMBO(op_combo, OS_AGUI),
-  [UI_CTRLSHFT] = COMBO(ui_combo, OS_CSFT),
-  [LQUOT_ALT] = COMBO(lquot_combo, OS_ALT),
-  [JK_SHFT] = COMBO(jk_combo, OS_SFT),
-  [DOTSLSH_SUPER] = COMBO(dotslsh_combo, OS_GUI),
-  [MCOMM_CTRL] = COMBO(mcomm_combo, OS_CTL),
+  [QW_CTLALT] = COMBO(qw_combo, OS_CALT),
+  [ER_SFTGUI] = COMBO(er_combo, OS_SGUI),
+  [AS_CTL] = COMBO(as_combo, OS_CTL),
+  [DF_SFT] = COMBO(df_combo, OS_SFT),
+  [ZX_ALT] = COMBO(zx_combo, OS_ALT),
+  [CV_GUI] = COMBO(cv_combo, OS_CTL),
+  [OP_CTLALT] = COMBO(op_combo, OS_CALT),
+  [UI_SFTGUI] = COMBO(ui_combo, OS_SGUI),
+  [LQUOT_CTL] = COMBO(lquot_combo, OS_CTL),
+  [JK_SFT] = COMBO(jk_combo, OS_SFT),
+  [DOTSLSH_ALT] = COMBO(dotslsh_combo, OS_ALT),
+  [MCOMM_GUI] = COMBO(mcomm_combo, OS_GUI),
   [COMB_SYM] = COMBO(sym_combo, LA_SYM),
   [COMB_CAT] = COMBO(cat_combo, LA_CAT)
 };
@@ -84,8 +84,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 
+#ifdef COMBO_TERM_PER_COMBO
+uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
+  switch (combo_index) {
+    case AS_CTL:
+    case LQUOT_CTL:
+    case QW_CTLALT:
+    case OP_CTLALT:
+    case ZX_ALT:
+    case DOTSLSH_ALT:
+      return COMBO_TERM - 30;
+
+    case DF_SFT:
+    case JK_SFT:
+      return COMBO_TERM + 5;
+
+    // Longer COMBO_TERM for the only non mod-tap style combos
+    case COMB_SYM:
+    case COMB_CAT:
+      return 150;
+  }
+
+  return COMBO_TERM;
+}
+#endif
+
 bool is_oneshot_cancel_key(uint16_t keycode) {
-	switch (keycode) {
+  switch (keycode) {
     case KC_Q:
     case KC_W:
     case KC_E:
@@ -120,68 +145,68 @@ bool is_oneshot_cancel_key(uint16_t keycode) {
     case KC_TAB:
     case KC_ENT:
     case KC_BSPC:
-			return true;
-	}
-	return false;
+      return true;
+  }
+  return false;
 }
 
 bool is_oneshot_ignored_key(uint16_t keycode) {
-	switch (keycode) {
-		case LA_NAV:
-		case LA_NUM:
-		case LA_SYM:
-		case LA_CAT:
-		case OS_SFT:
-		case OS_CTL:
-		case OS_ALT:
-		case OS_GUI:
-		case OS_AGUI:
-		case OS_CSFT:
-			return true;
-	}
-	return false;
+  switch (keycode) {
+    case LA_NAV:
+    case LA_NUM:
+    case LA_SYM:
+    case LA_CAT:
+    case OS_SFT:
+    case OS_CTL:
+    case OS_ALT:
+    case OS_GUI:
+    case OS_CALT:
+    case OS_SGUI:
+      return true;
+  }
+  return false;
 }
 
 oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 oneshot_state os_alt_state = os_up_unqueued;
 oneshot_state os_gui_state = os_up_unqueued;
-oneshot_state os_agui_state = os_up_unqueued;
-oneshot_state os_csft_state = os_up_unqueued;
+oneshot_state os_calt_state = os_up_unqueued;
+oneshot_state os_sgui_state = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-	// Callum oneshot modifiers
-	update_oneshot(
-		&os_shft_state, KC_LSFT, OS_SFT,
-		keycode, record
-	);
+  // Callum oneshot modifiers
+  update_oneshot(
+    &os_shft_state, KC_LSFT, OS_SFT,
+    keycode, record
+  );
 
-	update_oneshot(
-		&os_ctrl_state, KC_LCTL, OS_CTL,
-		keycode, record
-	);
+  update_oneshot(
+    &os_ctrl_state, KC_LCTL, OS_CTL,
+    keycode, record
+  );
 
-	update_oneshot(
-		&os_alt_state, KC_LALT, OS_ALT,
-		keycode, record
-	);
+  update_oneshot(
+    &os_alt_state, KC_LALT, OS_ALT,
+    keycode, record
+  );
 
-	update_oneshot(
-		&os_gui_state, KC_LGUI, OS_GUI,
-		keycode, record
-	);
+  update_oneshot(
+    &os_gui_state, KC_LGUI, OS_GUI,
+    keycode, record
+  );
 
-	update_oneshot(
-		&os_csft_state, LCTL(KC_LSFT), OS_CSFT,
-		keycode, record
-	);
+  update_oneshot(
+    &os_calt_state, LCTL(KC_LALT), OS_CALT,
+    keycode, record
+  );
 
-	update_oneshot(
-		&os_agui_state, LALT(KC_LGUI), OS_AGUI,
-		keycode, record
-	);
+  update_oneshot(
+    &os_sgui_state, LSFT(KC_LGUI), OS_SGUI,
+    keycode, record
+  );
 
-	// From here on we ignore keyups
+  // From here on we ignore keyups
   if (!record->event.pressed) { return true; }
 
   bool is_shifted = (get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT;
@@ -192,10 +217,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     return false;
   }
 
-	// Process catalan keycodes
-	if (catalan_process_record(keycode, is_shifted)) {
-		return false;
-	}
+  // Process catalan keycodes
+  if (catalan_process_record(keycode, is_shifted)) {
+    return false;
+  }
 
   switch (keycode) {
     // OLED toggle
@@ -220,6 +245,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-	state = update_tri_layer_state(state, NAV, NUM, FUN);
-	return state;
+  state = update_tri_layer_state(state, NAV, NUM, FUN);
+  return state;
 }
