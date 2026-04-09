@@ -1,5 +1,10 @@
 #include "oneshot.h"
 
+static inline void cancel_oneshot(oneshot_state *state, uint16_t mod) {
+  *state = os_up_unqueued;
+  unregister_code16(mod);
+}
+
 void update_oneshot(
     oneshot_state *state,
     uint16_t mod,
@@ -32,15 +37,20 @@ void update_oneshot(
         }
     } else {
         if (record->event.pressed) {
-            if (is_oneshot_cancel_key(keycode) && *state == os_up_queued) {
+            if (is_oneshot_cancel_press(keycode) && *state != os_up_unqueued) {
+                // Cancel oneshot on designated cancel keydown.
+                cancel_oneshot(state, mod);
+            } else if (is_oneshot_cancel_press_permissive(keycode) && *state == os_up_queued) {
                 // Cancel oneshot on designated cancel keydown only if the 
                 // modifier was released. Hold + cancel key still yields
                 // the modded cancel key.
-                *state = os_up_unqueued;
-                unregister_code16(mod);
+                cancel_oneshot(state, mod);
             }
         } else {
-            if (!is_oneshot_ignored_key(keycode)) {
+            if (is_oneshot_cancel_release(keycode) && *state != os_up_unqueued) {
+              // Cancel oneshot on designated cancel keyup.
+              cancel_oneshot(state, mod);
+            } else if (!is_oneshot_ignored_key(keycode)) {
                 // On non-ignored keyup, consider the oneshot used.
                 switch (*state) {
                 case os_down_unused:

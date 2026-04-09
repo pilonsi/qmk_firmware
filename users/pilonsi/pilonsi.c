@@ -13,138 +13,69 @@
 
 #include "pilonsi.h"
 
-const uint16_t PROGMEM qw_combo[] = {KC_Q, KC_W, COMBO_END};
-const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
-const uint16_t PROGMEM as_combo[] = {KC_A, KC_S, COMBO_END};
-const uint16_t PROGMEM df_combo[] = {KC_D, KC_F, COMBO_END};
-const uint16_t PROGMEM zx_combo[] = {KC_Z, KC_X, COMBO_END};
-const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
-const uint16_t PROGMEM op_combo[] = {KC_O, KC_P, COMBO_END};
-const uint16_t PROGMEM ui_combo[] = {KC_U, KC_I, COMBO_END};
-const uint16_t PROGMEM lquot_combo[] = {KC_L, KC_QUOT, COMBO_END};
-const uint16_t PROGMEM jk_combo[] = {KC_J, KC_K, COMBO_END};
-const uint16_t PROGMEM dotslsh_combo[] = {KC_DOT, KC_SLSH, COMBO_END};
-const uint16_t PROGMEM mcomm_combo[] = {KC_M, KC_COMM, COMBO_END};
-const uint16_t PROGMEM sym_combo[] = {CL_SYM1, CL_SYM2, COMBO_END};
-const uint16_t PROGMEM cat_combo[] = {CL_CAT1, CL_CAT2, COMBO_END};
-
-combo_t key_combos[] = {
-  [QW_CTLALT] = COMBO(qw_combo, OS_CALT),
-  [ER_SFTGUI] = COMBO(er_combo, OS_SGUI),
-  [AS_CTL] = COMBO(as_combo, OS_CTL),
-  [DF_SFT] = COMBO(df_combo, OS_SFT),
-  [ZX_ALT] = COMBO(zx_combo, OS_ALT),
-  [CV_GUI] = COMBO(cv_combo, OS_CTL),
-  [OP_CTLALT] = COMBO(op_combo, OS_CALT),
-  [UI_SFTGUI] = COMBO(ui_combo, OS_SGUI),
-  [LQUOT_CTL] = COMBO(lquot_combo, OS_CTL),
-  [JK_SFT] = COMBO(jk_combo, OS_SFT),
-  [DOTSLSH_ALT] = COMBO(dotslsh_combo, OS_ALT),
-  [MCOMM_GUI] = COMBO(mcomm_combo, OS_GUI),
-  [COMB_SYM] = COMBO(sym_combo, LA_SYM),
-  [COMB_CAT] = COMBO(cat_combo, LA_CAT)
-};
-
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_pilonsi(
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
     KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT,
     KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    U_NP,    U_NP,    LA_NAV,  KC_SPC,  KC_TAB,  KC_ENT,  KC_BSPC, LA_NUM,  U_NP,    U_NP
+    U_NP,    U_NP,    LA_LAL,  KC_SPC,  KC_TAB,  KC_ENT,  KC_BSPC, LA_LAR,  U_NP,    U_NP
+  ),
+  [LAR] = LAYOUT_pilonsi(
+    _______, _______, _______, _______, _______, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
+    _______, _______, _______, _______, _______, U_NA,    OS_SFT,  OS_CTL,  OS_GUI,  OS_ALT,
+    _______, _______, _______, _______, _______, U_NA,    LA_NUM,  LA_SYM,  U_NA,    U_NA,
+    U_NP,    U_NP,    _______, KC_ESC,  U_NU,    U_NA,    U_NA,    _______, U_NP,    U_NP
   ),
   [NUM] = LAYOUT_pilonsi(
     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
-    KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  U_NA,    CL_SYM1, CL_SYM2, U_NA,    U_NA,
-    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
-    U_NP,    U_NP,    _______, KC_0,    KC_MINS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
+    KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  U_NA,    OS_SFT,  OS_CTL,  OS_GUI,  OS_ALT,
+    KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, U_NA,    _______, U_NA,    U_NA,    U_NA,
+    U_NP,    U_NP,    KC_DOT,  KC_0,    KC_MINS, U_NA,    U_NA,    _______, U_NP,    U_NP
   ),
   [SYM] = LAYOUT_pilonsi(
     KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
-    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
-    U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
+    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, U_NA,    OS_SFT,  OS_CTL,  OS_GUI,  OS_ALT,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, U_NA,    U_NA,    _______, U_NA,    U_NA,
+    U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U_NA,    U_NA,    _______, U_NP,    U_NP
+  ),
+  [LAL] = LAYOUT_pilonsi(
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    _______, _______, _______, _______, _______,
+    OS_ALT,  OS_GUI,  OS_CTL,  OS_SFT,  U_NA,    _______, _______, _______, _______, _______,
+    U_NA,    U_NA,    LA_CAT,  LA_NAV,  U_NA,    _______, _______, _______, _______, _______,
+    U_NP,    U_NP,    _______, U_NA,    U_NA,    U_NU,    KC_DEL,  _______, U_NP,    U_NP
   ),
   [NAV] = LAYOUT_pilonsi(
     U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-    U_NA,    U_NA,    CL_CAT2, CL_CAT1, U_NA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    KC_VOLD, KC_VOLU, KC_MUTE, U_NU,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ESC,  KC_DEL,  _______, U_NP,    U_NP
+    OS_ALT,  OS_GUI,  OS_CTL,  OS_SFT,  U_NA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
+    U_NA,    U_NA,    U_NA,    _______, U_NA,    U_NU,    KC_VOLD, KC_VOLU, KC_MUTE, U_NU,
+    U_NP,    U_NP,    _______, U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NP,    U_NP
   ),
   [CAT] = LAYOUT_pilonsi(
     U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    CA_DI,   CA_AT,   CA_AO,   CA_PV,   KC_CAPS,
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    CA_NY,   U_NU,    CA_CC,   CA_EX,   CA_IN,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NP,    U_NP
+    OS_ALT,  OS_GUI,  OS_CTL,  OS_SFT,  U_NA,    CA_DI,   CA_AT,   CA_AO,   CA_PV,   KC_CAPS,
+    U_NA,    U_NA,    _______, U_NA,    U_NA,    CA_NY,   U_NU,    CA_CC,   CA_EX,   CA_IN,
+    U_NP,    U_NP,    _______, U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NP,    U_NP
   ),
   [FUN] = LAYOUT_pilonsi(
     KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, RM_HUEU, RM_SATU, RM_VALU, P_OLED,  RM_NEXT,
     KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SCRL, P_VER,   U_NU,    U_NU,    QK_RBT,  QK_BOOT,
     KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, RM_HUED, RM_SATD, RM_VALD, RM_TOGG, RM_PREV,
-    U_NP,    U_NP,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NA,    U_NP,    U_NP
+    U_NP,    U_NP,    _______, U_NU,    U_NU,    U_NU,    U_NU,    _______, U_NP,    U_NP
   ),
 };
 
-#ifdef COMBO_TERM_PER_COMBO
-uint16_t get_combo_term(uint16_t combo_index, combo_t *combo) {
-  switch (combo_index) {
-    case AS_CTL:
-    case LQUOT_CTL:
-    case QW_CTLALT:
-    case OP_CTLALT:
-    case ZX_ALT:
-    case DOTSLSH_ALT:
-      return COMBO_TERM - 30;
-
-    case DF_SFT:
-    case JK_SFT:
-      return COMBO_TERM + 5;
-
-    // Longer COMBO_TERM for the only non mod-tap style combos
-    case COMB_SYM:
-    case COMB_CAT:
-      return 150;
-  }
-
-  return COMBO_TERM;
+bool is_oneshot_cancel_press(uint16_t keycode) {
+  return false;
 }
-#endif
 
-bool is_oneshot_cancel_key(uint16_t keycode) {
+bool is_oneshot_cancel_press_permissive(uint16_t keycode) {
+  return false;
+}
+
+bool is_oneshot_cancel_release(uint16_t keycode) {
   switch (keycode) {
-    case KC_Q:
-    case KC_W:
-    case KC_E:
-    case KC_R:
-    case KC_T:
-    case KC_Y:
-    case KC_U:
-    case KC_I:
-    case KC_O:
-    case KC_P:
-    case KC_A:
-    case KC_S:
-    case KC_D:
-    case KC_F:
-    case KC_G:
-    case KC_H:
-    case KC_J:
-    case KC_K:
-    case KC_L:
-    case KC_QUOT:
-    case KC_Z:
-    case KC_X:
-    case KC_C:
-    case KC_V:
-    case KC_B:
-    case KC_N:
-    case KC_M:
-    case KC_COMM:
-    case KC_DOT:
-    case KC_SLSH:
-    case KC_SPC:
-    case KC_TAB:
-    case KC_ENT:
-    case KC_BSPC:
+    case LA_LAL:
+    case LA_LAR:
       return true;
   }
   return false;
@@ -160,8 +91,6 @@ bool is_oneshot_ignored_key(uint16_t keycode) {
     case OS_CTL:
     case OS_ALT:
     case OS_GUI:
-    case OS_CALT:
-    case OS_SGUI:
       return true;
   }
   return false;
@@ -171,8 +100,6 @@ oneshot_state os_shft_state = os_up_unqueued;
 oneshot_state os_ctrl_state = os_up_unqueued;
 oneshot_state os_alt_state = os_up_unqueued;
 oneshot_state os_gui_state = os_up_unqueued;
-oneshot_state os_calt_state = os_up_unqueued;
-oneshot_state os_sgui_state = os_up_unqueued;
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   // Callum oneshot modifiers
@@ -196,21 +123,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     keycode, record
   );
 
-  update_oneshot(
-    &os_calt_state, LCTL(KC_LALT), OS_CALT,
-    keycode, record
-  );
-
-  update_oneshot(
-    &os_sgui_state, LSFT(KC_LGUI), OS_SGUI,
-    keycode, record
-  );
-
   // From here on we ignore keyups
   if (!record->event.pressed) { return true; }
 
   bool is_shifted = (get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT;
-
 
   // Handle os shortcuts
   if (hostos_process_record(keycode)) {
@@ -245,6 +161,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  state = update_tri_layer_state(state, NAV, NUM, FUN);
+  state = update_tri_layer_state(state, LAL, LAR, FUN);
   return state;
 }

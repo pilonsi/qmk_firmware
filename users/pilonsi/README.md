@@ -1,4 +1,4 @@
-# Pilonsi layout version 15
+# Pilonsi layout version 16
 This is my personal 36-key layout, it is an evolved version of Miryoku with
 callum style mods and tweaks to suit my workflow. It also includes a few
 unicode wrappers to input catalan characters.
@@ -8,7 +8,7 @@ The layout is intended to be used with the following setup:
 - US Keyboard Layout
 - Corne or Ergodox EZ keyboards
 
-![Layout Reference](https://i.imgur.com/kZmeE19.png)
+![Layout Reference](https://i.imgur.com/kGBwLPD.png)
 
 ## Acknowledgements
 - [Miryoku](https://github.com/manna-harbour/miryoku)
