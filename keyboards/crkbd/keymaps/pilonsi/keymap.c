@@ -1,9 +1,5 @@
-// Copyright 2019 Manna Harbour
-// Copyright 2021 HellSingCoder
 // Copyright 2023-2026 Pilonsi
-// My personal 36-key layout based off a modified version of the wonderful
-// Miryoku layout, by Manna Harbour
-// https://github.com/manna-harbour/miryoku
+// My personal 36-key layout
 
 // This program is free software: you can redistribute it and/or modify it
 // under the terms of the GNU General Public License as published by the Free

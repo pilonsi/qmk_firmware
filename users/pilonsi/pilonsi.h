@@ -1,8 +1,5 @@
-// Copyright 2019 Manna Harbour
 // Copyright 2023-2026 Pilonsi
-// My personal 36-key layout based off a modified version of the wonderful
-// Miryoku layout, by Manna Harbour
-// https://github.com/manna-harbour/miryoku
+// My personal 36-key layout
 
 // This program is free software: you can redistribute it and/or modify it
 // under the terms of the GNU General Public License as published by the Free
@@ -17,38 +14,58 @@
 #pragma once
 
 #include QMK_KEYBOARD_H
-#include "sm_td.h"
 #include "hostos.h"
 #include "catalan.h"
 
-#define PILONSI_VERSION_STRING "14.1pre0"
+#define PILONSI_VERSION_STRING "14.2pre0"
 
 enum layers { BASE, MEDIA, NAV, CAT, SYM, NUM, FUN };
 
 enum my_keycodes {
-  // Custom settings
-  P_MODE = SAFE_RANGE, // Cycle OS mode
-  P_SAVE,  // Save OS mode
-  P_OLED, // Toggle OLED
-  P_VER,  // Show version string
+  // Custom keycodes
+  P_OLED = SAFE_RANGE, // Toggle OLED
+  P_VER,               // Show version string
 
-  // OS dependent shortcuts
-  P_RDO,
-  P_PST,
-  P_CPY,
-  P_CUT,
-  P_UND,
+  // Host OS related keycodes
+  HO_MODE, // Cycle OS mode
+  HO_SAVE, // Save OS mode
+  HO_RDO,
+  HO_PST,
+  HO_CPY,
+  HO_CUT,
+  HO_UND,
 
   // Catalan characters
-  CA_CC,  // Ç
-  CA_AT,  // ´
-  CA_AO,  // `
-  CA_DI,  // ¨
-  CA_PV,  // ·
-  CA_NY,  // Ñ
-  CA_EX,  // ¡
-  CA_IN,  // ¿
+  CA_CC,   // Ç
+  CA_AT,   // ´
+  CA_AO,   // `
+  CA_DI,   // ¨
+  CA_PV,   // ·
+  CA_EX,   // ¡
+  CA_IN,   // ¿
+
+  // Universal characters
+  CA_NY,   // Ñ
 };
+
+// Shorten the verbose mod-tap and layer-tap keys
+#define M_AGUI  LGUI_T(KC_A)
+#define M_SALT  LALT_T(KC_S)
+#define M_DCTL  LCTL_T(KC_D)
+#define M_FSFT  LSFT_T(KC_F)
+#define M_JSFT  LSFT_T(KC_J)
+#define M_KCTL  LCTL_T(KC_K)
+#define M_LALT  LALT_T(KC_L)
+#define M_QTGUI LGUI_T(KC_QUOT)
+#define M_XAGR  ALGR_T(KC_X)
+#define M_DTAGR ALGR_T(KC_DOT)
+
+#define M_ESCM  LT(MEDIA, KC_ESC)
+#define M_SPCN  LT(NAV,   KC_SPC)
+#define M_TABC  LT(CAT,   KC_TAB)
+#define M_ENTS  LT(SYM,   KC_ENT)
+#define M_BSPU  LT(NUM,   KC_BSPC)
+#define M_DELF  LT(FUN,   KC_DEL)
 
 #define U_NP KC_NO // key is not present
 #define U_NA KC_NO // present but not available for use

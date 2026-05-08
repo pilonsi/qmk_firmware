@@ -1,5 +1,5 @@
 # My QMK Layout
-This is my personal 36-key layout, it is a modified version of the wonderful [Miryoku](https://github.com/manna-harbour/miryoku/) layout by Manna Harbour.
+This is my personal 36-key layout, inspired by the wonderful [Miryoku](https://github.com/manna-harbour/miryoku/) layout by Manna Harbour.
 
 ![Layout Reference](https://i.imgur.com/41igRwu.png)
 

@@ -37,29 +37,29 @@ bool hostos_process_record(uint16_t keycode) {
   bool is_mac = (unicode_config.input_mode == UNICODE_MODE_MACOS);
 
   switch (keycode) {
-    case P_CPY:
+    case HO_CPY:
       tap_code16(is_mac ? LCMD(KC_C) : C(KC_C));
       return true;
-    case P_PST:
+    case HO_PST:
       tap_code16(is_mac ? LCMD(KC_V) : C(KC_V));
       return true;
-    case P_CUT:
+    case HO_CUT:
       tap_code16(is_mac ? LCMD(KC_X) : C(KC_X));
       return true;
-    case P_UND:
+    case HO_UND:
       tap_code16(is_mac ? LCMD(KC_Z) : C(KC_Z));
       return true;
-    case P_RDO:
+    case HO_RDO:
       tap_code16(is_mac ? S(LCMD(KC_Z)) : C(KC_Y));
       return true;
     // OS Mode switching logic
-    case P_SAVE:
+    case HO_SAVE:
       // This calls a routine to save mode to eeprom. Mode setting below
       // modifies the unicode_config struct directly, so this just sets it 
       // to the already configured value to store it.
       set_unicode_input_mode(unicode_config.input_mode);
       return false;
-    case P_MODE:
+    case HO_MODE:
       hostos_cycle();
       return false;
   }

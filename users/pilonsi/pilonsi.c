@@ -1,8 +1,5 @@
-// Copyright 2019 Manna Harbour
 // Copyright 2023-2026 Pilonsi
-// My personal 36-key layout based off a modified version of the wonderful
-// Miryoku layout, by Manna Harbour
-// https://github.com/manna-harbour/miryoku
+// My personal 36-key layout
 
 // This program is free software: you can redistribute it and/or modify it
 // under the terms of the GNU General Public License as published by the Free
@@ -19,12 +16,12 @@
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [BASE] = LAYOUT_pilonsi(
     KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,    KC_Y,    KC_U,    KC_I,    KC_O,    KC_P,
-    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,    KC_H,    KC_J,    KC_K,    KC_L,    KC_QUOT,
-    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, KC_DOT,  KC_SLSH,
-    U_NP,    U_NP,    KC_ESC,  KC_SPC,  KC_TAB,  KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
+    M_AGUI,  M_SALT,  M_DCTL,  M_FSFT,  KC_G,    KC_H,    M_JSFT,  M_KCTL,  M_LALT,  M_QTGUI,
+    KC_Z,    M_XAGR,  KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, M_DTAGR, KC_SLSH,
+    U_NP,    U_NP,    M_ESCM,  M_SPCN,  M_TABC,  M_ENTS,  M_BSPU,  M_DELF,  U_NP,    U_NP
   ),
   [NAV] = LAYOUT_pilonsi(
-    P_UND,   P_CUT,   P_CPY,   P_PST,   P_RDO,   P_RDO,   P_PST,   P_CPY,   P_CUT,   P_UND,
+    HO_UND,  HO_CUT,  HO_CPY,  HO_PST,  HO_RDO,  HO_RDO,  HO_PST,  HO_CPY,  HO_CUT,  HO_UND,
     KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS,
     KC_ESC,  KC_ALGR, KC_BSPC, KC_DEL,  U_NA,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
     U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
@@ -54,48 +51,51 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
   ),
   [FUN] = LAYOUT_pilonsi(
-    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, P_SAVE,  P_MODE,  P_VER,   QK_RBT,  QK_BOOT,
+    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, HO_SAVE,  HO_MODE,  P_VER,   QK_RBT,  QK_BOOT,
     KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SCRL, U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
     U_NP,    U_NP,    KC_APP,  KC_SPC,  KC_TAB,  U_NA,    U_NA,    U_NA,    U_NP,    U_NP
   ),
 };
 
-smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+#ifdef TAPPING_TERM_PER_KEY
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     // Home row mods
-    SMTD_MT(KC_A, KC_LGUI, 2)
-    SMTD_MT(KC_S, KC_LALT, 2)
-    SMTD_MT(KC_D, KC_LCTL, 2)
-    SMTD_MT(KC_F, KC_LSFT, 2)
-    SMTD_MT(KC_QUOT, KC_LGUI, 2)
-    SMTD_MT(KC_L, KC_LALT, 2)
-    SMTD_MT(KC_K, KC_LCTL, 2)
-    SMTD_MT(KC_J, KC_LSFT, 2)
+    case M_AGUI:
+    case M_QTGUI:
+      return TAPPING_TERM + 50;
+    case M_SALT:
+    case M_LALT:
+      return TAPPING_TERM + 40;
+    case M_DCTL:
+    case M_KCTL:
+      return TAPPING_TERM;
+    case M_FSFT:
+    case M_JSFT:
+      return TAPPING_TERM - 20;
 
-    // Layer switching on thumbs
-    SMTD_LT(KC_ESC, MEDIA, 2)
-    SMTD_LT(KC_SPC, NAV, 2)
-    SMTD_LT(KC_TAB, CAT, 2)
-    SMTD_LT(KC_ENT, SYM, 2)
-    SMTD_LT(KC_BSPC, NUM, 2)
-    SMTD_LT(KC_DEL, FUN, 2)
+    // Thumb keys
+    case M_ESCM:
+    case M_DELF:
+      return TAPPING_TERM;
+    case M_SPCN:
+    case M_BSPU:
+      return TAPPING_TERM - 20;
+    case M_TABC:
+    case M_ENTS:
+      return TAPPING_TERM - 20;
+
+    default:
+      return TAPPING_TERM;
   }
-
-  return SMTD_RESOLUTION_UNHANDLED;
 }
+#endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  // First process SM_TD
-  if (!process_smtd(keycode, record)) {
-    return false;
-  }
-
-  // Then continue with my custom processing
   if (!record->event.pressed) { return true; }
 
   bool is_shifted = (get_mods() | get_oneshot_mods()) & MOD_MASK_SHIFT;
-
 
   // Handle os shortcuts
   if (hostos_process_record(keycode)) {
@@ -115,7 +115,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         oled_off();
       } else {
         oled_on();
-      }  
+      }
       return false;
     #endif
 
