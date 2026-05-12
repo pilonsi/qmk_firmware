@@ -17,9 +17,9 @@
 #include "hostos.h"
 #include "catalan.h"
 
-#define PILONSI_VERSION_STRING "14.2pre0"
+#define PILONSI_VERSION_STRING "14.2"
 
-enum layers { BASE, MEDIA, NAV, CAT, SYM, NUM, FUN };
+enum layers { BASE, MEDIA, NAV, CAT, SYM, NUM, FUN, CFG };
 
 enum my_keycodes {
   // Custom keycodes
@@ -67,6 +67,9 @@ enum my_keycodes {
 #define M_BSPU  LT(NUM,   KC_BSPC)
 #define M_DELF  LT(FUN,   KC_DEL)
 
-#define U_NP KC_NO // key is not present
-#define U_NA KC_NO // present but not available for use
-#define U_NU KC_NO // available but not used
+#define M_CFG   MO(CFG)
+
+#define U_NP    KC_NO // key is not present
+#define U_NA    KC_NO // present but not available for use
+#define U_NU    KC_NO // available but not used
+#define U______ KC_NO // this is the key held to activate this layer

@@ -20,41 +20,47 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_Z,    M_XAGR,  KC_C,    KC_V,    KC_B,    KC_N,    KC_M,    KC_COMM, M_DTAGR, KC_SLSH,
     U_NP,    U_NP,    M_ESCM,  M_SPCN,  M_TABC,  M_ENTS,  M_BSPU,  M_DELF,  U_NP,    U_NP
   ),
-  [NAV] = LAYOUT_pilonsi(
-    HO_UND,  HO_CUT,  HO_CPY,  HO_PST,  HO_RDO,  HO_RDO,  HO_PST,  HO_CPY,  HO_CUT,  HO_UND,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, KC_ENT,  KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_CAPS,
-    KC_ESC,  KC_ALGR, KC_BSPC, KC_DEL,  U_NA,    KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
-  ),
   [CAT] = LAYOUT_pilonsi(
-    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    CA_DI,   CA_AT,   CA_AO,   CA_PV,   CA_NY,
-    U_NA,    KC_ALGR, U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    CA_CC,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    CA_PV,   U_NU,    CA_EX,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    U_NU,    CA_AT,   CA_AO,   CA_DI,   CA_CC,
+    U_NA,    KC_ALGR, U_NA,    U_NA,    U_NA,    U_NU,    CA_NY,   U_NU,    U_NU,    CA_IN,
+    U_NP,    U_NP,    U_NA,    U_NA,    U______, U_NU,    U_NU,    U_NU,    U_NP,    U_NP
+  ),
+  [NAV] = LAYOUT_pilonsi(
+    HO_UND,  HO_CUT,  HO_CPY,  HO_PST,  HO_RDO,  KC_HOME, KC_PGDN, KC_PGUP, KC_END,  KC_INS,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, CW_TOGG,
+    KC_BSPC, KC_ALGR, KC_DEL,  KC_ENT,  U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
+    U_NP,    U_NP,    U_NA,    U______, M_CFG,   KC_ENT,  KC_BSPC, KC_DEL,  U_NP,    U_NP
   ),
   [MEDIA] = LAYOUT_pilonsi(
     U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
-    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, CW_TOGG,
+    KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, U_NA,    KC_MPRV, KC_VOLD, KC_VOLU, KC_MNXT, KC_CAPS,
     U_NA,    KC_ALGR, U_NA,    U_NA,    U_NA,    U_NU,    KC_BRID, KC_BRIU, U_NU,    U_NU,
-    U_NP,    U_NP,    U_NA,    U_NA,    U_NA,    KC_MUTE, KC_MPLY, KC_MSTP, U_NP,    U_NP
+    U_NP,    U_NP,    U______, U_NA,    U_NA,    KC_MUTE, KC_MPLY, KC_MSTP, U_NP,    U_NP
+  ),
+  [SYM] = LAYOUT_pilonsi(
+    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
+    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
+    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
+    U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U______, U_NA,    U_NA,    U_NP,    U_NP
   ),
   [NUM] = LAYOUT_pilonsi(
     KC_LBRC, KC_7,    KC_8,    KC_9,    KC_RBRC, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
     KC_SCLN, KC_4,    KC_5,    KC_6,    KC_EQL,  U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     KC_GRV,  KC_1,    KC_2,    KC_3,    KC_BSLS, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
-    U_NP,    U_NP,    KC_DOT,  KC_0,    KC_MINS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
-  ),
-  [SYM] = LAYOUT_pilonsi(
-    KC_LCBR, KC_AMPR, KC_ASTR, KC_LPRN, KC_RCBR, RM_HUEU, RM_SATU, RM_VALU, RM_TOGG, RM_NEXT,
-    KC_COLN, KC_DLR,  KC_PERC, KC_CIRC, KC_PLUS, P_OLED,  KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
-    KC_TILD, KC_EXLM, KC_AT,   KC_HASH, KC_PIPE, RM_HUED, RM_SATD, RM_VALD, KC_ALGR, RM_PREV,
-    U_NP,    U_NP,    KC_LPRN, KC_RPRN, KC_UNDS, U_NA,    U_NA,    U_NA,    U_NP,    U_NP
+    U_NP,    U_NP,    KC_DOT,  KC_0,    KC_MINS, U_NA,    U______, U_NA,    U_NP,    U_NP
   ),
   [FUN] = LAYOUT_pilonsi(
-    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, HO_SAVE,  HO_MODE,  P_VER,   QK_RBT,  QK_BOOT,
+    KC_F12,  KC_F7,   KC_F8,   KC_F9,   KC_PSCR, U_NA,    U_NA,    U_NA,    U_NA,    U_NA,
     KC_F11,  KC_F4,   KC_F5,   KC_F6,   KC_SCRL, U_NA,    KC_LSFT, KC_LCTL, KC_LALT, KC_LGUI,
     KC_F10,  KC_F1,   KC_F2,   KC_F3,   KC_PAUS, U_NA,    U_NA,    U_NA,    KC_ALGR, U_NA,
-    U_NP,    U_NP,    KC_APP,  KC_SPC,  KC_TAB,  U_NA,    U_NA,    U_NA,    U_NP,    U_NP
+    U_NP,    U_NP,    KC_ESC,  KC_SPC,  KC_TAB,  U_NA,    U_NA,    U______, U_NP,    U_NP
+  ),
+  [CFG] = LAYOUT_pilonsi(
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    QK_BOOT,
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    P_VER,
+    U_NA,    U_NA,    U_NA,    U_NA,    U_NA,    U_NU,    U_NU,    U_NU,    U_NU,    U_NU,
+    U_NP,    U_NP,    U_NA,    U______, U______, HO_SAVE, HO_MODE, U_NU,    U_NP,    U_NP
   ),
 };
 
